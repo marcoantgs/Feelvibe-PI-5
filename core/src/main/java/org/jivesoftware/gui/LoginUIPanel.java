@@ -387,12 +387,14 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlLeft.add(lblLogo);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 102, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Spark");
+        jLabel1.setText("Feelvibe");
         jLabel1.setPreferredSize(new java.awt.Dimension(250, 22));
         pnlLeft.add(jLabel1);
 
-        jLabel2.setText("Instant Messenger");
+        jLabel2.setForeground(new java.awt.Color(153, 102, 255));
+        jLabel2.setText("Vibrando sentimentos");
         pnlLeft.add(jLabel2);
 
         lblProgress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -416,6 +418,7 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlInputs.setBackground(new java.awt.Color(255, 255, 255));
         pnlInputs.setPreferredSize(new java.awt.Dimension(220, 110));
 
+        tfUsername.setForeground(new java.awt.Color(153, 102, 255));
         tfUsername.setPreferredSize(new java.awt.Dimension(200, 30));
         tfUsername.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -430,9 +433,11 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         });
         pnlInputs.add(tfUsername);
 
+        tfDomain.setForeground(new java.awt.Color(153, 102, 255));
         tfDomain.setPreferredSize(new java.awt.Dimension(200, 30));
         pnlInputs.add(tfDomain);
 
+        tfPassword.setForeground(new java.awt.Color(153, 102, 255));
         tfPassword.setPreferredSize(new java.awt.Dimension(200, 30));
         pnlInputs.add(tfPassword);
 
