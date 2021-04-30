@@ -377,6 +377,7 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
 
         setLayout(new java.awt.BorderLayout());
 
+        pnlLeft.setBackground(new java.awt.Color(229, 220, 238));
         pnlLeft.setPreferredSize(new java.awt.Dimension(260, 0));
         pnlLeft.add(filler1);
 
@@ -387,13 +388,13 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlLeft.add(lblLogo);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 102, 255));
+        jLabel1.setForeground(new java.awt.Color(153, 51, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Feelvibe");
         jLabel1.setPreferredSize(new java.awt.Dimension(250, 22));
         pnlLeft.add(jLabel1);
 
-        jLabel2.setForeground(new java.awt.Color(153, 102, 255));
+        jLabel2.setForeground(new java.awt.Color(153, 51, 255));
         jLabel2.setText("Vibrando sentimentos");
         pnlLeft.add(jLabel2);
 
@@ -418,7 +419,6 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlInputs.setBackground(new java.awt.Color(255, 255, 255));
         pnlInputs.setPreferredSize(new java.awt.Dimension(220, 110));
 
-        tfUsername.setForeground(new java.awt.Color(153, 102, 255));
         tfUsername.setPreferredSize(new java.awt.Dimension(200, 30));
         tfUsername.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -433,11 +433,9 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         });
         pnlInputs.add(tfUsername);
 
-        tfDomain.setForeground(new java.awt.Color(153, 102, 255));
         tfDomain.setPreferredSize(new java.awt.Dimension(200, 30));
         pnlInputs.add(tfDomain);
 
-        tfPassword.setForeground(new java.awt.Color(153, 102, 255));
         tfPassword.setPreferredSize(new java.awt.Dimension(200, 30));
         pnlInputs.add(tfPassword);
 
@@ -471,7 +469,7 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlBtns.setBackground(new java.awt.Color(255, 255, 255));
         pnlBtns.setPreferredSize(new java.awt.Dimension(220, 120));
 
-        btnLogin.setBackground(new java.awt.Color(153, 102, 255));
+        btnLogin.setBackground(new java.awt.Color(153, 51, 255));
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.setEnabled(false);
