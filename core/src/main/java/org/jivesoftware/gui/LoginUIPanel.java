@@ -387,14 +387,15 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         lblLogo.setRequestFocusEnabled(false);
         pnlLeft.add(lblLogo);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Feelvibe");
         jLabel1.setPreferredSize(new java.awt.Dimension(250, 22));
         pnlLeft.add(jLabel1);
 
-        jLabel2.setForeground(new java.awt.Color(153, 51, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 0, 204));
         jLabel2.setText("Vibrando sentimentos");
         pnlLeft.add(jLabel2);
 
