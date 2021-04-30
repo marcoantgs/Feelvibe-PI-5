@@ -420,6 +420,7 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlInputs.setPreferredSize(new java.awt.Dimension(220, 110));
 
         tfUsername.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfUsername.setSelectionColor(new java.awt.Color(153, 51, 255));
         tfUsername.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 tfUsernameMouseEntered(evt);
@@ -434,9 +435,11 @@ public class LoginUIPanel extends javax.swing.JPanel implements KeyListener, Act
         pnlInputs.add(tfUsername);
 
         tfDomain.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfDomain.setSelectionColor(new java.awt.Color(153, 51, 255));
         pnlInputs.add(tfDomain);
 
         tfPassword.setPreferredSize(new java.awt.Dimension(200, 30));
+        tfPassword.setSelectionColor(new java.awt.Color(153, 51, 255));
         pnlInputs.add(tfPassword);
 
         pnlCenter.add(pnlInputs);
