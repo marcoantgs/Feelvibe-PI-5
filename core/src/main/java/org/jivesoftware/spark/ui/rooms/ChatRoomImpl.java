@@ -62,6 +62,7 @@ import java.util.Date;
 import java.util.List;
 
 import java.io.IOException;
+import org.jivesoftware.spark.Temporizador;
 
 /**
  * This is the Person to Person implementation of <code>ChatRoom</code>
@@ -103,7 +104,13 @@ public class ChatRoomImpl extends ChatRoom {
     private final ChatRoomButton addToRosterButton;
     private VCardPanel vcardPanel;
     
-    private JComponent chatStatePanel;    
+    private JComponent chatStatePanel; 
+    
+    private long contador = 1;
+    long tempo;
+    
+    // Instancia a classe Temporizador
+    Temporizador temporizador = new Temporizador();
 
     public ChatRoomImpl(final EntityJid participantJID, Resourcepart participantNickname, CharSequence title) {
         this(participantJID, participantNickname, title, true);
@@ -589,6 +596,7 @@ public class ChatRoomImpl extends ChatRoom {
 
     @Override
 	public void insertMessage(Message message) {
+        
         // Debug info
         super.insertMessage(message);
         MessageEvent messageEvent = message.getExtension("x", "jabber:x:event");
@@ -601,15 +609,43 @@ public class ChatRoomImpl extends ChatRoom {
         // Set the participant jid to their full JID.
         setParticipantJID(message.getFrom());
         
-        // *** Código para apresetar a mensagem no chat ***
-        // Chama o método ChecarMSG e armazena o valor na String msgAviso
         String msgAviso = "";
-        try {
-            msgAviso = SparkManager.getChatManager().ChecarMSG(message);
-        } catch (IOException | InterruptedException ex) {
-            System.out.println(ex);
+        
+        if(contador > 1){
+            // Chama o método para calcular se passou do tempo escolhido,
+            // passando o tempo que foi inicializado
+            temporizador.CalcularTempo(tempo);
+            
+            if(temporizador.isContagemFinalizada()){
+                // *** Código para apresetar a mensagem no chat ***
+                // Chama o método ChecarMSG e armazena o valor na String msgAviso
+                try {
+                    msgAviso = SparkManager.getChatManager().ChecarMSG(message);
+                } catch (IOException | InterruptedException ex) {
+                    System.out.println(ex);
+                }
+                getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
+                
+                // Como ele entrou no "if" zera o tempo para checar a contagem novamente
+                tempo = temporizador.rodarTempo();
+                // Coloca a variavel ContagemFinalizada como false para fazer uma nova checagem
+                temporizador.setContagemFinalizada(false);
+            }
+        }else{
+            // *** Código para apresetar a mensagem no chat ***
+            // Chama o método ChecarMSG e armazena o valor na String msgAviso
+            try {
+                msgAviso = SparkManager.getChatManager().ChecarMSG(message);
+            } catch (IOException | InterruptedException ex) {
+                System.out.println(ex);
+            }
+            getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
+            
+            // Roda o temporizador a primeira vez
+            tempo = temporizador.rodarTempo();
         }
-        getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
+        // Soma mais 1 ao contador
+        contador++;
     }
 
     private void checkEvents(Jid from, String packetID, MessageEvent messageEvent) {
