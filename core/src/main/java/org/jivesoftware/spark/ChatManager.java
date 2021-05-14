@@ -57,6 +57,13 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
 /**
  * Handles the Chat Management of each individual <code>Workspace</code>. The ChatManager is responsible
  * for creation and removal of chat rooms, transcripts, and transfers and room invitations.
@@ -425,8 +432,7 @@ public class ChatManager {
      * @param chatRoom the <code>ChatRoom</code> where the message was sent from.
      * @param message  the <code>Message</code> sent.
      */
-    public void fireGlobalMessageSentListeners( ChatRoom chatRoom, Message message )
-    {
+    public void fireGlobalMessageSentListeners( ChatRoom chatRoom, Message message ){
         for ( GlobalMessageListener listener : globalMessageListeners )
         {
             try
@@ -953,4 +959,50 @@ public class ChatManager {
             
         }
     }
+    
+    // Método para checar a mensagem recebida e retornar a mensagem desejada
+    public String ChecarMSG(Message message) throws IOException, MalformedURLException, InterruptedException{
+       
+        String msg = ""; 
+        
+        switch (message.getBody().trim()){
+            case ":)":
+            case ":-)":
+                msg = "Vibrar fraco";
+                break;
+            case ":(":
+            case ":-(":
+                msg = "Vibrar forte";
+                break;
+            default:
+                msg = "Mensagem sem comando";
+        }
+        EnviarMsgESP(msg);
+        return msg;
+    }
+    
+    public void EnviarMsgESP(String msg) throws MalformedURLException, IOException, InterruptedException{
+        
+        String charset = "UTF-8";
+        String param1 = msg;
+        
+        String query = String.format("param1=%s", 
+        URLEncoder.encode(param1, charset));
+        
+        URL url = new URL("http://192.168.0.100"+ "?" + query);
+
+        HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
+
+        //sem buffer, limpa imediatamente
+        httpConnection.setChunkedStreamingMode(1);
+
+        // Envia uma requisição de post
+        httpConnection.setDoOutput(true);
+        
+        DataOutputStream outPutWriter = new DataOutputStream(httpConnection.getOutputStream());
+        
+        outPutWriter.flush();
+        outPutWriter.close();
+    }
+    
 }
