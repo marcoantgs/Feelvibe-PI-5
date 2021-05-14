@@ -61,6 +61,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import java.io.IOException;
+
 /**
  * This is the Person to Person implementation of <code>ChatRoom</code>
  * This room only allows for 1 to 1 conversations.
@@ -598,6 +600,16 @@ public class ChatRoomImpl extends ChatRoom {
 
         // Set the participant jid to their full JID.
         setParticipantJID(message.getFrom());
+        
+        // *** Código para apresetar a mensagem no chat ***
+        // Chama o método ChecarMSG e armazena o valor na String msgAviso
+        String msgAviso = "";
+        try {
+            msgAviso = SparkManager.getChatManager().ChecarMSG(message);
+        } catch (IOException | InterruptedException ex) {
+            System.out.println(ex);
+        }
+        getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
     }
 
     private void checkEvents(Jid from, String packetID, MessageEvent messageEvent) {
