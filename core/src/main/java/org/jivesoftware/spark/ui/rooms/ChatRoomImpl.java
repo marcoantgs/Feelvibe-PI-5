@@ -624,12 +624,14 @@ public class ChatRoomImpl extends ChatRoom {
                 } catch (IOException | InterruptedException ex) {
                     System.out.println(ex);
                 }
-                getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
-                
-                // Como ele entrou no "if" zera o tempo para checar a contagem novamente
-                tempo = temporizador.rodarTempo();
-                // Coloca a variavel ContagemFinalizada como false para fazer uma nova checagem
-                temporizador.setContagemFinalizada(false);
+                // Checa se a mensagem tem algum comando
+                if(!msgAviso.equals("Mensagem sem comando")){
+                    getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
+                    // Como ele entrou no "if" zera o tempo para checar a contagem novamente
+                    tempo = temporizador.rodarTempo();
+                    // Coloca a variavel ContagemFinalizada como false para fazer uma nova checagem
+                    temporizador.setContagemFinalizada(false);
+                }
             }
         }else{
             // *** Código para apresetar a mensagem no chat ***
@@ -639,13 +641,15 @@ public class ChatRoomImpl extends ChatRoom {
             } catch (IOException | InterruptedException ex) {
                 System.out.println(ex);
             }
-            getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
-            
-            // Roda o temporizador a primeira vez
-            tempo = temporizador.rodarTempo();
+            // Checa se a mensagem tem algum comando
+            if(!msgAviso.equals("Mensagem sem comando")){
+                getTranscriptWindow().insertNotificationMessage("*** " + msgAviso + " ***", ChatManager.NOTIFICATION_COLOR);
+                // Roda o temporizador a primeira vez
+                tempo = temporizador.rodarTempo();
+                // Soma mais 1 ao contador
+                contador++;
+            }
         }
-        // Soma mais 1 ao contador
-        contador++;
     }
 
     private void checkEvents(Jid from, String packetID, MessageEvent messageEvent) {
