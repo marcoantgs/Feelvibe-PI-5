@@ -972,12 +972,20 @@ public class ChatManager {
                 break;
             case ":(":
             case ":-(":
+                msg = "Vibrar medio";
+                break;
+            case "(heart)":
                 msg = "Vibrar forte";
                 break;
             default:
                 msg = "Mensagem sem comando";
         }
-        EnviarMsgESP(msg);
+        
+        // Checa se a mensagem tem algum comando para enviar ao módulo
+        if(!msg.equals("Mensagem sem comando")){
+            EnviarMsgESP(msg);
+        }
+        
         return msg;
     }
     
