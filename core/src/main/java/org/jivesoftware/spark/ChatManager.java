@@ -968,14 +968,14 @@ public class ChatManager {
         switch (message.getBody().trim()){
             case ":)":
             case ":-)":
-                msg = "Vibrar fraco";
+                msg = "Emoji feliz";
                 break;
             case ":(":
             case ":-(":
-                msg = "Vibrar medio";
+                msg = "Emoji triste";
                 break;
             case "(heart)":
-                msg = "Vibrar forte";
+                msg = "Emoji coracao";
                 break;
             default:
                 msg = "Mensagem sem comando";
