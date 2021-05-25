@@ -26,7 +26,7 @@ public class Temporizador {
         fim = System.currentTimeMillis();
         diferenca = (fim - inicio) / 1000;
         //System.out.println(diferenca);
-        if(diferenca >= 5){
+        if(diferenca >= 10){
             setContagemFinalizada(true);
         }
     }
