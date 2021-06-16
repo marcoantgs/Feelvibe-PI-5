@@ -966,15 +966,70 @@ public class ChatManager {
         String msg = ""; 
         
         switch (message.getBody().trim()){
+            case ":1S:":
             case ":)":
             case ":-)":
+            case ":2S:":
+            case ";)":
+            case ";-)":
+            case ":3S:":
+            case ":4S:":
+            case ":5S:":
+            case ":P":
+            case ":p":
+            case ":-p":
+            case ":-P":
+            case ":6S:":
+            case ";P":
+            case ";p":
+            case ";-p":
+            case ";-P":
+            case ":7S:":
+            case ":-D":
+            case ":D":
+            case ":8S:":
+            case ":9S:":
+            case ":10S:":
+            case ":11S:":
+            case ":12S:":
+            case ":13S:":
+            case ":14S:":
+            case ":15S:":
                 msg = "Emoji feliz";
                 break;
+            case ":28S:":
+            case ":29S:":
             case ":(":
             case ":-(":
+            case ":30S:":
+            case ":31S:":
+            case ":32S:":
+            case "?:|":
+            case ":33S:":
+            case ":34S:":
+            case ":36S:":
+            case ":37S:":
+            case ":38S:":
+            case ":39S:":
+            case ":40S:":
+            case ":41S:":
                 msg = "Emoji triste";
                 break;
+            case ":16S:":
+            case ":45O:":
             case "(heart)":
+            case "(redheart)":
+            case ":46O:":
+            case "(greenheart)":
+            case ":47O:":
+            case "(blueheart)":
+            case ":48O:":
+            case "(yellowheart)":
+            case ":49O:":
+            case "(purpleheart)":
+            case ":50O:":
+            case "(blackheart)":
+            case "":
                 msg = "Emoji coracao";
                 break;
             default:
